@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
+import Header from "../../shared/Header";
 
 const CheckOut = () => {
 
@@ -45,8 +46,8 @@ const CheckOut = () => {
 
     return (
         <div>
-            <h1>the Bookmark is{data.title}</h1>
-            <div className="hero min-h-screen bg-base-200">
+            <Header>Check Out</Header>
+            <div className="hero min-h-[50vh] mt-36 bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                   
                     <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">

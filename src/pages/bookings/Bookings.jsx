@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import BookingRow from "./BookingRow";
+import Header from "../../shared/Header";
 
 const Bookings = () => {
 
@@ -63,7 +64,7 @@ const Bookings = () => {
 
     return (
         <div>
-            <h1>this is bookings</h1>
+            <Header>Bookings</Header>
 
             <div className="overflow-x-auto w-full">
                 <table className="table w-full">
