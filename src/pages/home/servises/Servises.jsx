@@ -22,7 +22,7 @@ const Servises = () => {
 
            <div style={{display: 'grid'}} className="grid-cols-3 gap-6 my-16">
            {
-                services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+               services.length === 0 ? <progress className="progress w-56"></progress> : services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
            }
            </div>
         </div>
