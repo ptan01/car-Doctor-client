@@ -25,7 +25,20 @@ const Login = () => {
         .then(result => {
             const user = result.user ;
             console.log(user)
-            navigate(from ,{replace: true})
+            const logedUser = {email : user.email} ;
+            fetch('http://localhost:5000/jwt',{
+                method: 'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify(logedUser)
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                navigate(from ,{replace: true})
+                localStorage.setItem('car-access-token', data.token)
+            })
             
         })
         .catch(err => {

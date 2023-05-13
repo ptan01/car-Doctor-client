@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
 import BookingRow from "./BookingRow";
 import Header from "../../shared/Header";
+import { useNavigate } from "react-router-dom";
 
 const Bookings = () => {
 
@@ -10,15 +11,24 @@ const Bookings = () => {
     const { user } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
     const [depend , setDepend] = useState(true)
-
+    const navigate = useNavigate()
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`)
+        fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+            method: "GET",
+            headers: {
+                authorization : `Bearer ${localStorage.getItem('car-access-token')}`
+            }
+        })
             .then(res => res.json())
             .then(data => {
-                setBookings(data)
-                console.log(data)
+                if(!data.error){
+                    setBookings(data)
+                }
+                else{
+                    navigate('/')
+                }
             })
     }, [depend])
 
@@ -35,6 +45,7 @@ const Bookings = () => {
                     alert('Deleted Done')
                 }
                 console.log(data)
+
                 setDepend(!depend)
             })
          }
