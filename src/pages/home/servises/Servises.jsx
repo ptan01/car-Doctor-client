@@ -12,6 +12,8 @@ const Servises = () => {
         .then(data => setServices(data))
     }, [])
 
+    console.log(services)
+
     return (
         <div className="mt-10">
            <div className="text-center">

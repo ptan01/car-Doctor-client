@@ -6,7 +6,7 @@ import Header from "../../shared/Header";
 const CheckOut = () => {
 
     const data = useLoaderData();
-    const {_id, title,img } = data ;
+    const {_id, title,img,price } = data ;
     const {user} = useContext(AuthContext)
    
 
@@ -47,7 +47,7 @@ const CheckOut = () => {
     return (
         <div>
             <Header>Check Out</Header>
-            <div className="hero min-h-[50vh] mt-36 bg-base-200">
+            <div className="hero min-h-[50vh] mt-20 bg-base-200">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                   
                     <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
@@ -71,7 +71,7 @@ const CheckOut = () => {
                                 <label className="label">
                                     <span className="label-text">Price</span>
                                 </label>
-                                <input type="text" name="price" placeholder="Price" className="input input-bordered" />
+                                <input type="text" name="price" defaultValue={price} placeholder="Price" className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
