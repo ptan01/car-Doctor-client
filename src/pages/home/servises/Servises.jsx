@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ServiceCard from "./serviceCard";
+import ServiceCard from "./ServiceCard";
 
 
 const Servises = () => {
@@ -7,7 +7,7 @@ const Servises = () => {
     const [services , setServices] = useState([])
 
     useEffect(()=>{
-        fetch('http://localhost:5000/services')
+        fetch('https://car-doctor-server-st9g.vercel.app/services')
         .then(res => res.json())
         .then(data => setServices(data))
     }, [])

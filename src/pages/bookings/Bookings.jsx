@@ -15,7 +15,7 @@ const Bookings = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/bookings?email=${user?.email}`,{
+        fetch(`https://car-doctor-server-st9g.vercel.app/bookings?email=${user?.email}`,{
             method: "GET",
             headers: {
                 authorization : `Bearer ${localStorage.getItem('car-access-token')}`
@@ -36,7 +36,7 @@ const Bookings = () => {
     const handleDelete =(id)=>{
         const confarm = confirm('Are you sure to delete this ?')
          if(confarm){
-            fetch(`http://localhost:5000/bookings/${id}`,{
+            fetch(`https://car-doctor-server-st9g.vercel.app/bookings/${id}`,{
                 method: 'DELETE'
             })
             .then(res => res.json())
@@ -54,7 +54,7 @@ const Bookings = () => {
 
     const handleConfrim =(id)=> {
 
-        fetch(`http://localhost:5000/bookings/${id}`,{
+        fetch(`https://car-doctor-server-st9g.vercel.app/bookings/${id}`,{
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

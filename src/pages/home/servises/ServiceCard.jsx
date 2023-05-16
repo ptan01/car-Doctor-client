@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 
+import { FaArrowRight } from 'react-icons/fa';
 import { Link } from "react-router-dom";
 
 const ServiceCard = ({ service }) => {
@@ -13,7 +14,7 @@ const ServiceCard = ({ service }) => {
                     <p className="text-xl font-semibold text-red-600">Price : ${service.price}</p>
                     <Link to={`/checkout/${service._id}`}>
                         <button className="btn btn-square btn-outline">
-                            Book now
+                            <FaArrowRight></FaArrowRight>
                         </button>
                     </Link>
                 </div>
