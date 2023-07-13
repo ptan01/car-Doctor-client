@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider";
 import Header from "../../shared/Header";
+import Swal from "sweetalert2";
 
 const CheckOut = () => {
 
@@ -29,7 +30,7 @@ const CheckOut = () => {
             service : title 
         }
         console.log(order)
-
+        //  https://car-doctor-server-st9g.vercel.app 
         fetch('https://car-doctor-server-st9g.vercel.app/bookings',{
             method:'POST',
             headers: {
@@ -40,6 +41,13 @@ const CheckOut = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Your Order Confirmed',
+                showConfirmButton: false,
+                timer: 1500
+              })
         })
 
     }

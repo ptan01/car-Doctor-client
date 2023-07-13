@@ -4,6 +4,7 @@ import { AuthContext } from "../../provider/AuthProvider";
 import BookingRow from "./BookingRow";
 import Header from "../../shared/Header";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Bookings = () => {
 
@@ -34,21 +35,38 @@ const Bookings = () => {
 
 
     const handleDelete =(id)=>{
-        const confarm = confirm('Are you sure to delete this ?')
-         if(confarm){
-            fetch(`https://car-doctor-server-st9g.vercel.app/bookings/${id}`,{
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data => {
-                if(data.deletedCount > 0){
-                    alert('Deleted Done')
-                }
-                console.log(data)
-
-                setDepend(!depend)
-            })
-         }
+        // const confarm = confirm('Are you sure to delete this ?')
+        //  if(confarm){
+           
+        //  }
+         Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+          }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://car-doctor-server-st9g.vercel.app/bookings/${id}`,{
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.deletedCount > 0){
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                          )
+                    }
+                    console.log(data)
+    
+                    setDepend(!depend)
+                })
+            }
+          })
         
     }
 
